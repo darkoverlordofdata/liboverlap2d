@@ -1,0 +1,47 @@
+### AutoVala Project ###
+autovala_version: 24
+project_name: liboverlap2d
+vala_version: 0.30
+
+vala_binary: src/liboverlap2d
+vala_check_package: json-glib-1.0
+*vala_check_package: gee-0.8
+*vala_check_package: glib-2.0
+*vala_check_package: gobject-2.0
+*vala_source: Composite.gs
+*vala_source: Image9patch.gs
+*vala_source: Label.gs
+*vala_source: Layer.gs
+*vala_source: LibraryItem.gs
+*vala_source: Overlap2D.gs
+*vala_source: Physics.gs
+*vala_source: PhysicsPropertiesVO.gs
+*vala_source: Point.gs
+*vala_source: Project.gs
+*vala_source: Resolution.gs
+*vala_source: Scene.gs
+*vala_source: Shape.gs
+*vala_source: liboverlap2d.vala
+
+
+*po: po
+
+*translate: genie src/Composite.gs
+*translate: genie src/Image9patch.gs
+*translate: genie src/Label.gs
+*translate: genie src/Layer.gs
+*translate: genie src/LibraryItem.gs
+*translate: genie src/Overlap2D.gs
+*translate: genie src/Physics.gs
+*translate: genie src/PhysicsPropertiesVO.gs
+*translate: genie src/Point.gs
+*translate: genie src/Project.gs
+*translate: genie src/Resolution.gs
+*translate: genie src/Scene.gs
+*translate: genie src/Shape.gs
+*translate: vala src/liboverlap2d.vala
+
+*data: data/local
+
+*doc: doc
+

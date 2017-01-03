@@ -1,0 +1,15 @@
+Source: liboverlap2d
+Maintainer: bruce davidson <darkoverlordofdata@gmail.com>
+Priority: optional
+Section: misc
+Build-Depends: build-essential, po-debconf, valac, libjson-glib-dev, libgee-0.8-dev, libglib2.0-dev, cmake, gettext, pkg-config, gcc, g++, make, intltool
+
+Package: liboverlap2d
+Architecture: any
+Version: 1.0.0
+Depends: libjson-glib-1.0-0, libglib2.0-0, libgee-0.8-2
+Description: Overlap2d/Vala runtime library 
+ Loads data exported from Overlap2d
+ language vala 
+ use standalone or with libbosco/libentitas
+
