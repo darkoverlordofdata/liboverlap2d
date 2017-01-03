@@ -1,5 +1,9 @@
 # Overlap2D - liboverlap2d
 
+## status
+
+work in progress
+
 inspired by https://github.com/UnderwaterApps/overlap2d-runtime-libgdx
  
         Overlay2D data is exported and embedded 
