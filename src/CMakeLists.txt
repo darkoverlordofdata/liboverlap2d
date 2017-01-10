@@ -7,13 +7,15 @@ set (GETTEXT_PACKAGE "liboverlap2d")
 set (RELEASE_NAME "liboverlap2d")
 set (CMAKE_C_FLAGS "")
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
-set (VERSION "1.0.0")
+set (VERSION "0.0.1")
 set (TESTSRCDIR "${CMAKE_SOURCE_DIR}")
 set (DOLLAR "$")
 
 configure_file (${CMAKE_SOURCE_DIR}/src/Config.vala.cmake ${CMAKE_BINARY_DIR}/src/Config.vala)
 add_definitions(-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\")
-set (VERSION "1.0.0")
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/overlap2d.pc ${CMAKE_CURRENT_BINARY_DIR}/overlap2d.pc)
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/overlap2d.deps ${CMAKE_CURRENT_BINARY_DIR}/overlap2d.deps)
+set (VERSION "0.0.1")
 add_definitions (${DEPS_CFLAGS})
 link_libraries ( ${DEPS_LIBRARIES} )
 link_directories ( ${DEPS_LIBRARY_DIRS} )
@@ -28,43 +30,87 @@ set (VALA_PACKAGES ${VALA_PACKAGES} glib-2.0)
 set (VALA_PACKAGES ${VALA_PACKAGES} gobject-2.0)
 
 set (APP_SOURCES ${APP_SOURCES} ${CMAKE_CURRENT_BINARY_DIR}/Config.vala)
-set (APP_SOURCES ${APP_SOURCES} Composite.gs)
-set (APP_SOURCES ${APP_SOURCES} Image9patch.gs)
-set (APP_SOURCES ${APP_SOURCES} Label.gs)
-set (APP_SOURCES ${APP_SOURCES} Layer.gs)
-set (APP_SOURCES ${APP_SOURCES} LibraryItem.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/CompositeItemVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/CompositeVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/Image9patchVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/LabelVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/LayerItemVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/MainItemVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/PhysicsBodyDataVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/PhysicsPropertiesVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/PointVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/ProjectInfoVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/ResolutionEntryVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/SceneVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/ShapeVO.gs)
+set (APP_SOURCES ${APP_SOURCES} Data/SimpleImageVO.gs)
 set (APP_SOURCES ${APP_SOURCES} Overlap2D.gs)
-set (APP_SOURCES ${APP_SOURCES} Physics.gs)
-set (APP_SOURCES ${APP_SOURCES} PhysicsPropertiesVO.gs)
-set (APP_SOURCES ${APP_SOURCES} Point.gs)
-set (APP_SOURCES ${APP_SOURCES} Project.gs)
-set (APP_SOURCES ${APP_SOURCES} Resolution.gs)
-set (APP_SOURCES ${APP_SOURCES} Scene.gs)
-set (APP_SOURCES ${APP_SOURCES} Shape.gs)
-set (APP_SOURCES ${APP_SOURCES} liboverlap2d.vala)
+set (APP_SOURCES ${APP_SOURCES} ParseIt.gs)
+set (APP_SOURCES ${APP_SOURCES} Resources/ResourceManager.gs)
+set (APP_SOURCES ${APP_SOURCES} SceneLoader.gs)
+set (APP_SOURCES ${APP_SOURCES} ToString.gs)
 
 
 if ((${CMAKE_BUILD_TYPE} STREQUAL "Debug") OR (${CMAKE_BUILD_TYPE} STREQUAL "RelWithDebInfo"))
 	set(COMPILE_OPTIONS ${COMPILE_OPTIONS} "-g")
 endif()
 
-vala_precompile(VALA_C liboverlap2d
+set (COMPILE_OPTIONS ${COMPILE_OPTIONS} --library=overlap2d --gir overlap2d-0.0.gir )
+
+vala_precompile(VALA_C overlap2d
 	${APP_SOURCES}
 PACKAGES
 	${VALA_PACKAGES}
+OPTIONS
+	${COMPILE_OPTIONS}
+GENERATE_VAPI
+	overlap2d
+GENERATE_HEADER
+	overlap2d
 )
 
-add_executable(liboverlap2d ${VALA_C})
+add_library(overlap2d SHARED ${VALA_C})
+
+set_target_properties( overlap2d PROPERTIES
+VERSION
+	0.0.1
+SOVERSION
+	0 )
 
 
 install(TARGETS
-	liboverlap2d
-RUNTIME DESTINATION
-	${CMAKE_INSTALL_BINDIR}
+	overlap2d
+LIBRARY DESTINATION
+	${CMAKE_INSTALL_LIBDIR}/
+)
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/overlap2d.h
+DESTINATION
+	${CMAKE_INSTALL_INCLUDEDIR}/
+)
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/overlap2d.vapi
+DESTINATION
+	${CMAKE_INSTALL_DATAROOTDIR}/vala/vapi/
+)
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/overlap2d.deps
+DESTINATION
+	${CMAKE_INSTALL_DATAROOTDIR}/vala/vapi/
+)
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/overlap2d-0.0.gir
+DESTINATION
+	${CMAKE_INSTALL_DATAROOTDIR}/gir-1.0/
+)
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/overlap2d.pc
+DESTINATION
+	${CMAKE_INSTALL_LIBDIR}/pkgconfig/
 )
 if(HAVE_VALADOC)
-	valadoc(liboverlap2d
-		${CMAKE_BINARY_DIR}/valadoc/liboverlap2d
+	valadoc(overlap2d
+		${CMAKE_BINARY_DIR}/valadoc/overlap2d
 		${APP_SOURCES}
 	PACKAGES
 		${VALA_PACKAGES}
@@ -77,3 +123,10 @@ if(HAVE_VALADOC)
 		${CMAKE_INSTALL_DATAROOTDIR}/doc/liboverlap2d
 	)
 endif()
+
+install(CODE "MESSAGE (\"
+************************************************
+* Run 'sudo ldconfig' to complete installation *
+************************************************
+
+\") " )

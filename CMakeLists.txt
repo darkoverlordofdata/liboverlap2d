@@ -40,5 +40,8 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gobject-2.0)
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
 
+add_subdirectory(src/Resources)
+add_subdirectory(po)
+add_subdirectory(src/Data)
 add_subdirectory(src)
 
