@@ -7,13 +7,13 @@ foreach(file_data ${list_data})
 		install(DIRECTORY
 			${file_data}
 		DESTINATION
-			${CMAKE_INSTALL_DATAROOTDIR}/liboverlap2d
+			${CMAKE_INSTALL_DATAROOTDIR}/libo2d
 		)
 	ELSE()
 		install(FILES
 			${file_data}
 		DESTINATION
-			${CMAKE_INSTALL_DATAROOTDIR}/liboverlap2d
+			${CMAKE_INSTALL_DATAROOTDIR}/libo2d
 		)
 	ENDIF()
 endforeach()

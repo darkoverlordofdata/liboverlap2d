@@ -1,17 +1,18 @@
 [indent=4]
-uses Overlap2D.Data
-uses Overlap2D.Resources
+uses o2d.data
+uses o2d.resources
 
-namespace Overlap2D
+namespace o2d
 
     class SceneLoader : Object
         
         prop readonly rm: ResourceManager
         prop readonly sceneVO: SceneVO
 
-        construct(uri: string)
-            _rm = new ResourceManager(uri)
+        construct()
+            _rm = new ResourceManager()
             rm.initAllResources()
+            print "SceneLoader initialized"
 
         def loadScene(sceneName: string): SceneVO
             _sceneVO = rm.getSceneVO(sceneName)
@@ -19,7 +20,8 @@ namespace Overlap2D
             // print _sceneVO.to_string()
             return _sceneVO
 
-        def loadVoFromLibrary(libraryName: string) : CompositeItemVO
+        def loadVoFromLibrary(libraryName: string): CompositeItemVO
             var projectInfoVO = rm.getProjectVO()
             var compositeItemVO = projectInfoVO.libraryItems[libraryName]
             return compositeItemVO
+

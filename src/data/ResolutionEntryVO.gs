@@ -1,8 +1,8 @@
-[indent=4]
 /**
  * Screen Resolution
  */
-namespace Overlap2D.Data
+[indent=4]
+namespace o2d.data
     /**
      *
      */
@@ -18,7 +18,7 @@ namespace Overlap2D.Data
         /**
          * getMultiplier
          */
-        def getMultiplier(originalResolution: ResolutionEntryVO): double
+        def getMultiplier(originalResolution: ResolutionEntryVO?): double
             mul: double
 
             if base == 0

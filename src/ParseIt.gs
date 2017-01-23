@@ -1,7 +1,7 @@
 [indent=4]
 uses Gee
-uses Overlap2D.Data
-namespace Overlap2D
+uses o2d.data
+namespace o2d
     /**
      * Parse Json values
      *
@@ -53,22 +53,22 @@ namespace Overlap2D
             if json.has_member("sImages")
                 var imagesJson = json.get_array_member("sImages")
                 for var imageJson in imagesJson.get_elements() 
-                    it.sImages.add(new Data.SimpleImageVO(imageJson.get_object()))
+                    it.sImages.add(new data.SimpleImageVO(imageJson.get_object()))
 
             if json.has_member("sImage9patchs")
                 var images9Json = json.get_array_member("sImage9patchs")
                 for var image9Json in images9Json.get_elements() 
-                    it.sImage9patchs.add(new Data.Image9patchVO(image9Json.get_object()))
+                    it.sImage9patchs.add(new data.Image9patchVO(image9Json.get_object()))
 
             if json.has_member("sLabels")
                 var labelsJson = json.get_array_member("sLabels")
                 for var labelJson in labelsJson.get_elements() 
-                    it.sLabels.add(new Data.LabelVO(labelJson.get_object()))
+                    it.sLabels.add(new data.LabelVO(labelJson.get_object()))
 
             if json.has_member("layers")
                 var layersJson = json.get_array_member("layers")
                 for var layerJson in layersJson.get_elements() 
-                    it.layers.add(new Data.LayerItemVO(layerJson.get_object()))
+                    it.layers.add(new data.LayerItemVO(layerJson.get_object()))
                 
         
         /**
@@ -136,6 +136,15 @@ namespace Overlap2D
             if json.has_member("uniqueId")
                 it.uniqueId = (int)json.get_int_member("uniqueId")
 
+            if json.has_member("itemIdentifier")
+                it.itemIdentifier = json.get_string_member("itemIdentifier")
+
+            if json.has_member("scaleX")
+                it.scaleX = (double)json.get_double_member("scaleX")
+
+            if json.has_member("scaleY")
+                it.scaleY = (double)json.get_double_member("scaleY")
+                
             if json.has_member("x")
                 it.x = (double)json.get_double_member("x")
 
@@ -148,20 +157,29 @@ namespace Overlap2D
             if json.has_member("originY")    
                 it.originY = (double)json.get_double_member("originY")
 
+            if json.has_member("rotation")    
+                it.rotation = (double)json.get_double_member("rotation")
+
             if json.has_member("zIndex")
                 it.zIndex = (int)json.get_int_member("zIndex")
 
             if json.has_member("layerName")
                 it.layerName = json.get_string_member("layerName")
 
+            if json.has_member("tint")
+                it.tint = new array of double[4]
+                var tint_i = 0
+                for var tint in json.get_array_member("tint").get_elements()
+                    it.tint[tint_i++] = tint.get_double()
+
             if json.has_member("composite")
-                it.composite = new Data.CompositeVO(json.get_object_member("composite"))
+                it.composite = new data.CompositeVO(json.get_object_member("composite"))
 
             if json.has_member("shape")
-                it.shape = new Data.ShapeVO(json.get_object_member("shape"))
+                it.shape = new data.ShapeVO(json.get_object_member("shape"))
             
             if json.has_member("physics")
-                it.physics = new Data.PhysicsBodyDataVO(json.get_object_member("physics"))
+                it.physics = new data.PhysicsBodyDataVO(json.get_object_member("physics"))
 
             if json.has_member("height")
                 it.height = (double)json.get_double_member("height")
@@ -240,15 +258,15 @@ namespace Overlap2D
                 it.pixelToWorld = (int)json.get_int_member("pixelToWorld")
 
             if json.has_member("originalResolution")    
-                it.originalResolution = new Data.ResolutionEntryVO(json.get_object_member("originalResolution"))
+                it.originalResolution = new data.ResolutionEntryVO(json.get_object_member("originalResolution"))
 
             var scenesJson = json.get_array_member("scenes")
             for var sceneJson in scenesJson.get_elements() 
-                it.scenes.add(new Data.SceneVO(sceneJson.get_object()))
+                it.scenes.add(new data.SceneVO(sceneJson.get_object()))
                 
             var itemsJson = json.get_object_member("libraryItems")
             for var itemKey in itemsJson.get_members()
-                var item = new Data.CompositeItemVO(itemsJson.get_object_member(itemKey))
+                var item = new data.CompositeItemVO(itemsJson.get_object_member(itemKey))
                 it.libraryItems[itemKey] = item
                 
         
@@ -276,7 +294,7 @@ namespace Overlap2D
                 it.sceneName = json.get_string_member("sceneName")
                 
             if json.has_member("composite")
-                it.composite = new Data.CompositeVO(json.get_object_member("composite"))
+                it.composite = new data.CompositeVO(json.get_object_member("composite"))
                 
         
         /**
@@ -288,10 +306,10 @@ namespace Overlap2D
                 ////print "polygon"
                 for var poly in json.get_array_member("polygons").get_elements()
                     var point_array = poly.get_array()
-                    var points = new ArrayList of Data.PointVO
+                    var points = new list of data.PointVO
                     it.polygons.add(points)
                     for var i = 0 to (point_array.get_length()-1)
-                        points.add(new Data.PointVO(point_array.get_object_element(i)))
+                        points.add(new data.PointVO(point_array.get_object_element(i)))
                 
         
         /**

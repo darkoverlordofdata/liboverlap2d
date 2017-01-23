@@ -1,57 +1,77 @@
 ### AutoVala Project ###
 autovala_version: 24
-project_name: liboverlap2d
+project_name: libo2d
 vala_version: 0.30
 
-vala_library: src/liboverlap2d
+vala_library: src/libo2d
 version: 0.0.1
-namespace: overlap2d
+namespace: o2d
+*vala_vapi: vapis/SDL2_image.vapi
+*vala_vapi: vapis/SDL2_mixer.vapi
+*vala_vapi: vapis/SDL2_ttf.vapi
+*vala_vapi: vapis/entitas.vapi
+*vala_vapi: vapis/sdl2.vapi
+*vala_vapi: vapis/sdx.vapi
 vala_check_package: json-glib-1.0
 *vala_check_package: gee-0.8
 *vala_check_package: glib-2.0
 *vala_check_package: gobject-2.0
-*vala_source: Data/CompositeItemVO.gs
-*vala_source: Data/CompositeVO.gs
-*vala_source: Data/Image9patchVO.gs
-*vala_source: Data/LabelVO.gs
-*vala_source: Data/LayerItemVO.gs
-*vala_source: Data/MainItemVO.gs
-*vala_source: Data/PhysicsBodyDataVO.gs
-*vala_source: Data/PhysicsPropertiesVO.gs
-*vala_source: Data/PointVO.gs
-*vala_source: Data/ProjectInfoVO.gs
-*vala_source: Data/ResolutionEntryVO.gs
-*vala_source: Data/SceneVO.gs
-*vala_source: Data/ShapeVO.gs
-*vala_source: Data/SimpleImageVO.gs
-*vala_source: Overlap2D.gs
 *vala_source: ParseIt.gs
-*vala_source: Resources/ResourceManager.gs
 *vala_source: SceneLoader.gs
 *vala_source: ToString.gs
+*vala_source: data/CompositeItemVO.gs
+*vala_source: data/CompositeVO.gs
+*vala_source: data/CoreActorData.gs
+*vala_source: data/Image9patchVO.gs
+*vala_source: data/LabelVO.gs
+*vala_source: data/LayerItemVO.gs
+*vala_source: data/MainItemVO.gs
+*vala_source: data/PhysicsBodyDataVO.gs
+*vala_source: data/PhysicsPropertiesVO.gs
+*vala_source: data/PointVO.gs
+*vala_source: data/ProjectInfoVO.gs
+*vala_source: data/ResolutionEntryVO.gs
+*vala_source: data/SceneVO.gs
+*vala_source: data/ShapeVO.gs
+*vala_source: data/SimpleImageVO.gs
+*vala_source: resources/IAssetLoader.gs
+*vala_source: resources/IDataLoader.gs
+*vala_source: resources/IResourceRetriever.gs
+*vala_source: resources/ResourceManager.gs
+*vala_source: scene2d/BuiltItemHandler.gs
+*vala_source: scene2d/ButtonClickListener.gs
+*vala_source: scene2d/CompositeActor.gs
+*vala_source: utils/CustomVariables.gs
 
 
 *po: po
 
-*translate: genie src/Data/CompositeItemVO.gs
-*translate: genie src/Data/CompositeVO.gs
-*translate: genie src/Data/Image9patchVO.gs
-*translate: genie src/Data/LabelVO.gs
-*translate: genie src/Data/LayerItemVO.gs
-*translate: genie src/Data/MainItemVO.gs
-*translate: genie src/Data/PhysicsBodyDataVO.gs
-*translate: genie src/Data/PhysicsPropertiesVO.gs
-*translate: genie src/Data/PointVO.gs
-*translate: genie src/Data/ProjectInfoVO.gs
-*translate: genie src/Data/ResolutionEntryVO.gs
-*translate: genie src/Data/SceneVO.gs
-*translate: genie src/Data/ShapeVO.gs
-*translate: genie src/Data/SimpleImageVO.gs
-*translate: genie src/Overlap2D.gs
 *translate: genie src/ParseIt.gs
-*translate: genie src/Resources/ResourceManager.gs
 *translate: genie src/SceneLoader.gs
 *translate: genie src/ToString.gs
+*translate: genie src/data/CompositeItemVO.gs
+*translate: genie src/data/CompositeVO.gs
+*translate: genie src/data/CoreActorData.gs
+*translate: genie src/data/Image9patchVO.gs
+*translate: genie src/data/LabelVO.gs
+*translate: genie src/data/LayerItemVO.gs
+*translate: genie src/data/MainItemVO.gs
+*translate: genie src/data/PhysicsBodyDataVO.gs
+*translate: genie src/data/PhysicsPropertiesVO.gs
+*translate: genie src/data/PointVO.gs
+*translate: genie src/data/ProjectInfoVO.gs
+*translate: genie src/data/ResolutionEntryVO.gs
+*translate: genie src/data/SceneVO.gs
+*translate: genie src/data/ShapeVO.gs
+*translate: genie src/data/SimpleImageVO.gs
+*translate: genie src/resources/IAssetLoader.gs
+*translate: genie src/resources/IDataLoader.gs
+*translate: genie src/resources/IResourceRetriever.gs
+*translate: genie src/resources/ResourceManager.gs
+*translate: genie src/scene2d/BuiltItemHandler.gs
+*translate: genie src/scene2d/ButtonClickListener.gs
+*translate: genie src/scene2d/CompositeActor.gs
+*translate: genie src/utils/CustomVariables.gs
 
 *data: data/local
 

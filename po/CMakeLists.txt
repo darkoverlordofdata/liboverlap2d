@@ -2,5 +2,5 @@
 ### Do not edit
 
 include (Translations)
-add_translations_directory("liboverlap2d")
-add_translations_catalog("liboverlap2d" ../src/Data ../src ../src/Resources )
+add_translations_directory("libo2d")
+add_translations_catalog("libo2d" ../src ../src/data ../src/resources ../src/scene2d ../src/utils )

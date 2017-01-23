@@ -1,8 +1,8 @@
-[indent=4]
 /**
  * load overlap2d project.dt
  */
-namespace Overlap2D.Data
+[indent=4]
+namespace o2d.data
     /**
      *
      */

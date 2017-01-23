@@ -1,7 +1,7 @@
 ### CMakeLists automatically created with AutoVala
 ### Do not edit
 
-project (liboverlap2d)
+project (libo2d)
 cmake_minimum_required (VERSION 2.6)
 cmake_policy (VERSION 2.8)
 list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -40,8 +40,10 @@ set(MODULES_TO_CHECK ${MODULES_TO_CHECK} gobject-2.0)
 pkg_check_modules(DEPS REQUIRED ${MODULES_TO_CHECK})
 
 
-add_subdirectory(src/Resources)
+add_subdirectory(src/utils)
 add_subdirectory(po)
-add_subdirectory(src/Data)
+add_subdirectory(src/data)
+add_subdirectory(src/scene2d)
+add_subdirectory(src/resources)
 add_subdirectory(src)
 

@@ -1,15 +1,15 @@
-[indent=4]
 /**
  * Patch9 Image
  */
-namespace Overlap2D.Data
+[indent=4]
+namespace o2d.data
     /**
      *
      */
-    class Image9patchVO : MainItemVO
+    class SimpleImageVO : MainItemVO
         prop imageName: string
-        prop width: double
-        prop height: double
+        prop isRepeat: bool
+        prop isPolygon: bool
         construct(json: Json.Object)
             super(json)
 

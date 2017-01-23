@@ -1,4 +1,4 @@
-namespace overlap2dConstants {
+namespace o2dConstants {
 	public const string DATADIR = "@DATADIR@";
 	public const string PKGDATADIR = "@PKGDATADIR@";
 	public const string GETTEXT_PACKAGE = "@GETTEXT_PACKAGE@";

@@ -1,16 +1,18 @@
-# liboverlap2d
+# libo2d
+
 
 ## status
 loads the json files:
 * project.dt
 * scenes/*.dt
 
-providing stronly typed read-only access to the entire model
+providing strongly typed access to the entire model
 
 inspired by https://github.com/UnderwaterApps/overlap2d-runtime-libgdx
-but does not include the ecs or ui components.
+I didn't name it overlap2d-runtime-libsdx.
+It does not include the ecs (ashley) components.
  
-        Overlay2D data is exported and embedded 
+        Overlap2D data is exported and embedded 
         into the application as a gresource:
 
 
