@@ -95,7 +95,6 @@ namespace o2d.scene2d
             
             return className
 
-
         def buildImages(itemHandler: BuiltItemHandler, images: list of SimpleImageVO)
             for var i=0 to (images.size-1)
                 var image = new Image.region(ir.getTextureRegion(images[i].imageName))
@@ -117,7 +116,7 @@ namespace o2d.scene2d
 
         def buildLabels(itemHandler: BuiltItemHandler, labels: list of LabelVO)
             for lab in labels
-                var style = new Label.LabelStyle(sdx.Font.fromFile(lab.style, lab.size), Color.WHITE)
+                var style = new Label.LabelStyle(new Font(Sdx.files.resource(lab.style), lab.size), Color.WHITE)
                 var label = new Label(lab.text, style)
                 label.setAlignment(lab.align)
                 label.setWidth(lab.width * pixelsPerWU / resMultiplier)
@@ -125,7 +124,6 @@ namespace o2d.scene2d
                 processMain(label, lab)
                 addActor(label)
                 itemHandler.onItemBuild(label)
-
 
         def processMain(actor: Actor, composite: MainItemVO)
             // print "===================================="
