@@ -1,7 +1,9 @@
 # libo2d
 
-
 ## status
+on hiatus until Gnome can be more positive about the future of Vala
+https://mail.gnome.org/archives/vala-list/2016-September/msg00001.html 
+
 loads the json files:
 * project.dt
 * scenes/*.dt
